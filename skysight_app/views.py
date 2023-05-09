@@ -14,13 +14,15 @@ def flight_view(request):
         if form.is_valid():
             flight_number = form.cleaned_data['flight_number']
             data = get_flight_data(flight_number)
-            if data.get('data'):  # check if 'data' key exists in response
-                flight_data = data['data'][0]  # get the first flight data
-            else:
-                flight_data = None
+            print(data)
+            flight_data = None 
+            if data.get('data'):  
+                flight_data = data['data'][0] 
             return render(request, 'flight/index.html', {'flight': flight_data})
     else:
         form = FlightSearchForm()
     return render(request, 'flight/flight_search.html', {'form': form})
+
+
 
 

@@ -4,7 +4,7 @@
 <h1>Flight Data</h1>
 
 {% if flight %}
-    <h2>Flight number: {{ flight.flight.iata }}</h2>
+    <h2>Flight number: {{ flight.flight.number }}</h2>
     <p>Departure airport: {{ flight.departure.airport }}</p>
     <p>Arrival airport: {{ flight.arrival.airport }}</p>
 {% else %}
