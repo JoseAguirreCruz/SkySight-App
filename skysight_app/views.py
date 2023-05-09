@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
-from .api import get_flight_data, get_weather_data
-from .forms import FlightSearchForm, CitySearchForm
+from .api import get_flight_data, get_shipment_data, get_weather_data
+from .forms import FlightSearchForm, CitySearchForm, ShipmentSearchForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request, 'home.html')
 
-
+@login_required
 def flight_view(request):
     if request.method == 'POST':
         form = FlightSearchForm(request.POST)
@@ -24,7 +25,7 @@ def flight_view(request):
         form = FlightSearchForm()
     return render(request, 'flight/flight_search.html', {'form': form})
 
-
+@login_required
 def weather_view(request):
     if request.method == 'POST':
         form = CitySearchForm(request.POST)
@@ -36,6 +37,15 @@ def weather_view(request):
         form = CitySearchForm()
     return render(request, 'weather/weather_search.html', {'form': form})
 
+@login_required
+def shipment_search_view(request):
+    form = ShipmentSearchForm(request.GET or None)
+    if form.is_valid():
+        tracking_number = form.cleaned_data.get('tracking_number')
+        if tracking_number:
+            data = get_shipment_data(tracking_number)
+            return render(request, 'shipment/index.html', {'data': data})
+    return render(request, 'shipment/shipment_search.html', {'form': form})
 
 def signup(request):
     error_message = ''

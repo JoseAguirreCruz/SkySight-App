@@ -5,7 +5,7 @@ def get_flight_data(flight_number, ):
     params = {
     "access_key": "47ac311f0e565b5fb2af38c5c85f84ec", 
     "flight_number": flight_number,
-      }   
+    }   
     response = requests.get(url, params=params)
     data = response.json()
     return data
@@ -19,3 +19,14 @@ def get_weather_data(city):
     response = requests.get(url, params=params)
     data = response.json()
     return data
+
+def get_shipment_data(tracking_number):
+    url = "https://api.ship24.com/tracking"
+    params = {
+        "apiKey": "apik_3rJU47UiO5lwXqtIl2VC7kYiIJXova", 
+        "trackingNumber": tracking_number,
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+    return data
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Search for Shipment Information</h1>
+
+<form method="get" action="{% url 'shipment' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Track</button>
+</form>
+
+{% endblock %}

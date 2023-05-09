@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shipment Information</h1>
+
+{% if data %}
+    <h2>Tracking Number: {{ data.trackingNumber }}</h2>
+    <p>Status: {{ data.status }}</p>
+{% else %}
+    <p>No shipment data available</p>
+{% endif %}
+
+{% endblock %}
