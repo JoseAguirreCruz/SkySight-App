@@ -17,8 +17,12 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;SkySight</a></li>
         </ul>
         <ul class="right">
+          {% if user.is_authenticated %}
           <li><a href="/flight/index">Flight Tracker</a></li>
           <li><a href="/weather/index">Weather</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
