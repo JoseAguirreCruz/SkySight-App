@@ -21,6 +21,7 @@
           <li><a href="/flight/index">Flight Tracker</a></li>
           <li><a href="/weather/index">Weather</a></li>
           {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
         </ul>
