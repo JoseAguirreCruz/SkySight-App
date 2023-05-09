@@ -5,9 +5,6 @@ from .forms import FlightSearchForm, CitySearchForm
 def home(request):
   return render(request, 'home.html')
 
-def about(request):
-  return render(request, 'about.html')
-
 def flight_view(request):
     if request.method == 'POST':
         form = FlightSearchForm(request.POST)
