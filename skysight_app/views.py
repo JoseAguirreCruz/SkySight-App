@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html')
 
+
 @login_required
 def flight_view(request):
     if request.method == 'POST':
@@ -25,6 +26,7 @@ def flight_view(request):
         form = FlightSearchForm()
     return render(request, 'flight/flight_search.html', {'form': form})
 
+
 @login_required
 def weather_view(request):
     if request.method == 'POST':
@@ -37,6 +39,7 @@ def weather_view(request):
         form = CitySearchForm()
     return render(request, 'weather/weather_search.html', {'form': form})
 
+
 @login_required
 def shipment_search_view(request):
     form = ShipmentSearchForm(request.GET or None)
@@ -46,6 +49,7 @@ def shipment_search_view(request):
             data = get_shipment_data(tracking_number)
             return render(request, 'shipment/index.html', {'data': data})
     return render(request, 'shipment/shipment_search.html', {'form': form})
+
 
 def signup(request):
     error_message = ''
