@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Weather Data</h1>
+
+{% if weather %}
+    <h2>Weather in {{ weather.location.name }}</h2>
+    <p>Temperature: {{ weather.current.temp_c }} °C</p>
+    <p>Condition: {{ weather.current.condition.text }}</p>
+{% else %}
+    <p>No weather data available</p>
+{% endif %}
+
+{% endblock %}
