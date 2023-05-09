@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Flight Data</h1>
+
+{% if flight %}
+    <h2>Flight number: {{ flight.flight.iata }}</h2>
+    <p>Departure airport: {{ flight.departure.airport }}</p>
+    <p>Arrival airport: {{ flight.arrival.airport }}</p>
+{% else %}
+    <p>No flight data available</p>
+{% endif %}
+
+{% endblock %}
+
+
