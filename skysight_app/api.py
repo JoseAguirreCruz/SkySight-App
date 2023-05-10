@@ -1,3 +1,4 @@
+import json
 import requests
 
 def get_flight_data(flight_number, ):
@@ -20,13 +21,6 @@ def get_weather_data(city):
     data = response.json()
     return data
 
-def get_shipment_data(tracking_number):
-    url = "https://api.ship24.com/tracking"
-    params = {
-        "apiKey": "apik_3rJU47UiO5lwXqtIl2VC7kYiIJXova", 
-        "trackingNumber": tracking_number,
-    }
-    response = requests.get(url, params=params)
-    data = response.json()
-    return data
+
+
 

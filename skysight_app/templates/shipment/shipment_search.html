@@ -3,7 +3,7 @@
 
 <h1>Search for Shipment Information</h1>
 
-<form method="get" action="{% url 'shipment' %}">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Track</button>

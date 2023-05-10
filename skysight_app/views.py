@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .api import get_flight_data, get_shipment_data, get_weather_data
-from .forms import FlightSearchForm, CitySearchForm, ShipmentSearchForm
+from .api import get_flight_data, get_weather_data
+from .forms import FlightSearchForm, CitySearchForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-
 
 def home(request):
     return render(request, 'home.html')
@@ -41,14 +40,6 @@ def weather_view(request):
 
 
 @login_required
-def shipment_search_view(request):
-    form = ShipmentSearchForm(request.GET or None)
-    if form.is_valid():
-        tracking_number = form.cleaned_data.get('tracking_number')
-        if tracking_number:
-            data = get_shipment_data(tracking_number)
-            return render(request, 'shipment/index.html', {'data': data})
-    return render(request, 'shipment/shipment_search.html', {'form': form})
 
 
 def signup(request):

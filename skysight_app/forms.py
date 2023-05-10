@@ -6,5 +6,4 @@ class FlightSearchForm(forms.Form):
 class CitySearchForm(forms.Form):
     city = forms.CharField(label='City', max_length=100)
 
-class ShipmentSearchForm(forms.Form):
-    tracking_number = forms.CharField(label='Tracking Number', max_length=100)
+
