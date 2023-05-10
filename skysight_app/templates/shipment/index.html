@@ -3,8 +3,20 @@
 
 <h1>Tracking Results</h1>
 
+{% for package in packages %}
+    <p>
+        Tracking number: {{ package.tracking_number }} <br>
+        Carrier code: {{ package.carrier_code }} <br>
+        Delivery status: {{ package.tracking_info.delivery_status }} <br>
+        <a href="{% url 'package_edit' package.id %}">Edit</a>
+        <a href="{% url 'package_delete' package.id %}">Delete</a>
+    </p>
+{% endfor %}
+<a href="{% url 'package_new' %}">Add new package</a>
 
 {% endblock %}
+
+
 
 
 

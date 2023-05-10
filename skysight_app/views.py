@@ -4,6 +4,7 @@ from .forms import FlightSearchForm, CitySearchForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from .models import *
 
 def home(request):
     return render(request, 'home.html')
@@ -37,10 +38,6 @@ def weather_view(request):
     else:
         form = CitySearchForm()
     return render(request, 'weather/weather_search.html', {'form': form})
-
-
-@login_required
-
 
 def signup(request):
     error_message = ''
