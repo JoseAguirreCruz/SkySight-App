@@ -29,7 +29,6 @@ def flight_view(request):
         form = FlightSearchForm()
     return render(request, 'flight/flight_search.html', {'form': form})
 
-
 @login_required
 def weather_view(request):
     if request.method == 'POST':
@@ -37,21 +36,18 @@ def weather_view(request):
         if form.is_valid():
             city = form.cleaned_data['city']
             weather_data = get_weather_data(city)
-            weather = {
-                'city': city,
-                'temperature': weather_data['current']['temp_c'],
-                'condition': weather_data['current']['condition']['text'],
-            }
-            all_weather = WeatherData.objects.all()  
+            weather = WeatherData(
+                user=request.user,
+                city=city,
+                temperature=weather_data['current']['temp_c'],
+                condition=weather_data['current']['condition']['text'],
+            )
+            all_weather = WeatherData.objects.filter(user=request.user)
             return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
-        else:
-            weather = {}  
     else:
         form = CitySearchForm()
-        all_weather = WeatherData.objects.all() 
-        weather = {}  
-    return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
-
+        all_weather = WeatherData.objects.filter(user=request.user)
+    return render(request, 'weather/weather_search.html', {'form': form, 'all_weather': all_weather})
 
 @login_required
 def delete_weather_view(request, weather_id):
@@ -86,11 +82,12 @@ def save_weather_view(request):
         temperature = request.POST.get('temperature')
         condition = request.POST.get('condition')
         weather = WeatherData.objects.create(
+            user=request.user,
             city=city,
             temperature=temperature,
             condition=condition,
         )
-        return redirect('weather')  # Redirect to the weather index page after saving
+        return redirect('index')
     else:
         return HttpResponseNotAllowed(['POST'])
 

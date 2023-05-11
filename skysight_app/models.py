@@ -9,6 +9,7 @@ class Tracker(models.Model):
         return super().form_valid(form)
 
 class WeatherData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=100)
     temperature = models.FloatField()
     condition = models.CharField(max_length=200)
