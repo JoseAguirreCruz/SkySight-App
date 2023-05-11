@@ -1,9 +1,17 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Hello, Welcome to SkySight</h1>
-<hr>
-<p>Your Ultimate Tracker!</p>
-
+<div class="welcome">
+  <h1>Hi, Welcome to SkySight!</h1>
+  <div class="button-container">
+    <a class='dropdown-trigger btn custom-button' href='#' data-target='dropdown1'>Track Now!</a>
+  </div>  
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="/flight/index">Flight Tracker</a></li>
+    <li><a href="/weather/index">Weather</a></li>
+  </ul>
+</div>
+<div class="welcome">
+  <img class="welcome-image" src="https://wallpaper.dog/large/10792407.jpg" alt="My Image">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 {% endblock %}

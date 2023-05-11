@@ -1,5 +1,5 @@
-body {
-  background-color: rgba(125, 125, 195, 0.904);
+* {
+
 }
 
 .nav-wrapper {
@@ -9,3 +9,59 @@ body {
 .page-footer {
   background-color: rgb(1,53,127) !important;
 }
+
+.welcome {
+  width: 50%;
+  float: left;
+  height: 50%;
+  background-color: aqua;
+} 
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+header {
+  flex-shrink: 0; 
+}
+
+main {
+  flex-grow: 1; 
+}
+
+footer {
+  flex-shrink: 0; 
+}
+
+.custom-button {
+  background-color: rgb(1,53,127); 
+}
+
+.custom-button:hover {
+  background-color: rgba(1, 54, 127, 0.85); 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome {
+  width: 50%; 
+  height: 50%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.welcome-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
