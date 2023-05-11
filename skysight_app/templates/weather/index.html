@@ -1,25 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
 
-<h1>Weather Data</h1>
-
-{% if weather %}
-    <h2>Weather in {{ weather.location.name }}</h2>
-    <p>Temperature: {{ weather.current.temp_c }} °C</p>
-    <p>Condition: {{ weather.current.condition.text }}</p>
-
-    <form method="POST" action="{% url 'save_weather_data' %}">
-        {% csrf_token %}
-        <input type="hidden" name="city" value="{{ weather.location.name }}">
-        <input type="hidden" name="temperature" value="{{ weather.current.temp_c }}">
-        <input type="hidden" name="condition" value="{{ weather.current.condition.text }}">
-        <input type="submit" value="Save">
-    </form>
-{% else %}
-    <p>No weather data available</p>
-{% endif %}
-
-{% endblock %}
 
 
 
