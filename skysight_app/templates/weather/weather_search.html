@@ -9,4 +9,28 @@
     <button type="submit">Search</button>
 </form>
 
+{% if weather.id %}
+<div>
+    <h1>Delete Weather Data</h1>
+    <form method="POST" action="{% url 'delete_weather_data' weather.id %}">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the weather data for {{ weather.city }}?</p>
+    <input type="submit" value="Delete">
+    </form>
+</div>
+{% endif %}
+
+{% for weather in all_weather %}
+    <div>
+        <h1>{{ weather.city }}</h1>
+        <p>{{ weather.temperature }}</p>
+        <p>{{ weather.condition }}</p>
+        <form method="POST" action="{% url 'delete_weather_data' weather.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+{% endfor %}
+
 {% endblock %}
+
