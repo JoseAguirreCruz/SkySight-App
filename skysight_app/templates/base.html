@@ -33,6 +33,10 @@
     </nav>
   </header>
   <main class="container">
+    <div id="loading" style="display: none;">
+      <div class="airplane">
+      </div>
+    </div>
     {% block content %}
     {% endblock %}
   </main>
@@ -40,13 +44,55 @@
     <div class="right">All Rights Reserved, &copy; 2023 SkySight &nbsp;</div>
   </footer>
   <script>
-    window.onload = function() {
-      setInterval(function() {
-        var now = new Date();
-        var localTime = now.toLocaleTimeString();
-        document.getElementById('localTime').textContent = localTime;
-      }, 100);
-    };
-    </script>
+window.onload = function() {
+  setInterval(function() {
+    var now = new Date();
+    var localTime = now.toLocaleTimeString();
+    document.getElementById('localTime').textContent = localTime;
+  }, 100);
+  var forms = document.getElementsByTagName('form');
+  for (var i = 0; i < forms.length; i++) {
+    forms[i].addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('loading').style.display = 'block';  
+      setTimeout(function() {
+        e.target.submit();
+      }, 2000);
+    });
+  }
+};
+  </script>
 </body>
+<style>
+  #loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+.airplane {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 2s linear infinite;
+  background-image: url('https://www.freeiconspng.com/uploads/airplane-png-33.png'); /* Replace with the path to your airplane image */
+  background-size: cover;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+  </style>  
 </html>
