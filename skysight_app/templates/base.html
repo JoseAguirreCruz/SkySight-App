@@ -14,14 +14,18 @@
     <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;SkySight</a></li>
-        </ul>
+          <a href="/" class="left brand-logo">
+            <img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106318787701116989/skysight-high-resolution-logo-white-on-transparent-background.png" alt="SkySight" style="height:40px; width:auto;">
+          </a>
+        </ul>        
         <ul class="right">
           {% if user.is_authenticated %}
-          <li><a href="/flight/index">Flight Tracker</a></li>
-          <li><a href="/weather/index">Weather</a></li>
-          <li><a href="https://www.booking.com">Book Flight</a></li>
-          <li><span id="localTime"></span></li>
+          <li><a href="/flight/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106327502625964072/direct-flight.png" alt="Track Icon" style="height:25px; width:auto; margin-right:5px; margin-bottom: -2px;">
+            Flight Tracker</a></li>
+          <li><a href="/weather/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106325205753790616/cloudy.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px;">
+            Weather</a></li>
+          <li><a href="https://www.booking.com"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106328617329365052/airplane-ticket.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -2px;">Book Flight</a></li>
+          <li><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106329068175110174/clock.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -3px;"><span id="localTime"></span></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -70,7 +74,7 @@ window.onload = function() {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.091);
   z-index: 1000;
 }
 
@@ -82,7 +86,7 @@ window.onload = function() {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: spin 2s linear infinite;
-  background-image: url('https://www.freeiconspng.com/uploads/airplane-png-33.png'); /* Replace with the path to your airplane image */
+  background-image: url('https://www.freeiconspng.com/uploads/airplane-png-33.png'); 
   background-size: cover;
 }
 

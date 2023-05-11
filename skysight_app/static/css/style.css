@@ -1,4 +1,11 @@
 body {
-  background-color: rgba(44, 44, 202, 0.904);
+  background-color: rgba(125, 125, 195, 0.904);
 }
 
+.nav-wrapper {
+  background-color: rgb(1,53,127) !important;
+}
+
+.page-footer {
+  background-color: rgb(1,53,127) !important;
+}
