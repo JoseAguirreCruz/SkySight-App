@@ -37,19 +37,19 @@ def weather_view(request):
         if form.is_valid():
             city = form.cleaned_data['city']
             weather_data = get_weather_data(city)
-            weather = WeatherData.objects.create(
-                city=city,
-                temperature=weather_data['current']['temp_c'],
-                condition=weather_data['current']['condition']['text'],
-            )
+            weather = {
+                'city': city,
+                'temperature': weather_data['current']['temp_c'],
+                'condition': weather_data['current']['condition']['text'],
+            }
             all_weather = WeatherData.objects.all()  
             return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
         else:
-            weather = WeatherData()  
+            weather = {}  
     else:
         form = CitySearchForm()
         all_weather = WeatherData.objects.all() 
-        weather = WeatherData()  
+        weather = {}  
     return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
 
 
@@ -74,12 +74,10 @@ def update_weather_view(request, weather_id):
             weather.temperature = weather_data['current']['temp_c']
             weather.condition = weather_data['current']['condition']['text']
             weather.save()
-            return redirect('index')
+            return redirect('weather')
     else:
         form = CitySearchForm(initial={'city': weather.city})
-    return render(request, 'weather/weather_search.html', {'form': form})
-
-
+    return render(request, 'weather/weather_update.html', {'form': form, 'weather': weather})
 
 @login_required
 def save_weather_view(request):
@@ -92,9 +90,9 @@ def save_weather_view(request):
             temperature=temperature,
             condition=condition,
         )
-        return redirect('index')  # Redirect to the weather index page after saving
+        return redirect('weather')  # Redirect to the weather index page after saving
     else:
-        return HttpResponseNotAllowed(['POST']) 
+        return HttpResponseNotAllowed(['POST'])
 
 def signup(request):
     error_message = ''

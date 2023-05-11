@@ -9,17 +9,33 @@
     <button type="submit">Search</button>
 </form>
 
+{% if weather %}
+    <h2>Weather in {{ weather.city }}</h2>
+    <p>Temperature: {{ weather.temperature }} °C</p>
+    <p>Condition: {{ weather.condition }}</p>
+
+    <form method="POST" action="{% url 'save_weather' %}">
+        {% csrf_token %}
+        <input type="hidden" name="city" value="{{ weather.city }}">
+        <input type="hidden" name="temperature" value="{{ weather.temperature }}">
+        <input type="hidden" name="condition" value="{{ weather.condition }}">
+        <input type="submit" value="Save">
+    </form>
+{% else %}
+    <p>No weather data available</p>
+{% endif %}
+
 {% for weather in all_weather %}
     <div>
         <h1>{{ weather.city }}</h1>
-        <p>{{ weather.temperature }}</p>
+        <p>{{ weather.temperature }} °C</p>
         <p>{{ weather.condition }}</p>
         <form method="POST" action="{% url 'delete_weather_data' weather.id %}">
             {% csrf_token %}
             <input type="submit" value="Delete">
         </form>
+        <a href="{% url 'update_weather_data' weather.id %}">Edit</a>
     </div>
 {% endfor %}
 
 {% endblock %}
-
