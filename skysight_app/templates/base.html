@@ -21,11 +21,13 @@
           <li><a href="/flight/index">Flight Tracker</a></li>
           <li><a href="/weather/index">Weather</a></li>
           <li><a href="https://www.booking.com">Book Flight</a></li>
+          <li><span id="localTime"></span></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
+          
         </ul>
       </div>
     </nav>
@@ -37,5 +39,14 @@
   <footer class="page-footer">
     <div class="right">All Rights Reserved, &copy; 2023 SkySight &nbsp;</div>
   </footer>
+  <script>
+    window.onload = function() {
+      setInterval(function() {
+        var now = new Date();
+        var localTime = now.toLocaleTimeString();
+        document.getElementById('localTime').textContent = localTime;
+      }, 100);
+    };
+    </script>
 </body>
 </html>
