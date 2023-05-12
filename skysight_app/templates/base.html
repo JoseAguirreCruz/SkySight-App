@@ -45,7 +45,10 @@
     {% endblock %}
   </main>
   <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2023 SkySight &nbsp;</div>
+      <h6 id="company" class="center">Company</h6>
+      <a href="{% url 'signup' %}">Sign Up</a>
+      <div class="center">All Rights Reserved, &copy; 2023 SkySight &nbsp;
+    </div>
   </footer>
   <script>
 // localtime
@@ -74,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   </script>
 </body>
+<!-- wont style in css -->
 <style>
   #loading {
   position: fixed;
@@ -81,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.091);
+  background-color: rgba(255, 255, 255, 0.33);
   z-index: 1000;
 }
 
