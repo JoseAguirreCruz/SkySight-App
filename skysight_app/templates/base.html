@@ -13,17 +13,16 @@
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <ul>
-          <a href="/" class="left brand-logo">
-            <img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106318787701116989/skysight-high-resolution-logo-white-on-transparent-background.png" alt="SkySight" style="height:40px; width:auto;">
-          </a>
-        </ul>        
-        <ul class="right">
+        <a href="/" class="brand-logo left">
+          <img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106318787701116989/skysight-high-resolution-logo-white-on-transparent-background.png" alt="SkySight" style="height:40px; width:auto;">
+        </a>
+        <!-- Hamburger Trigger -->
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <!-- Desktop Navigation -->
+        <ul class="right hide-on-med-and-down">
           {% if user.is_authenticated %}
-          <li><a href="/flight/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106327502625964072/direct-flight.png" alt="Track Icon" style="height:25px; width:auto; margin-right:5px; margin-bottom: -2px;">
-            Flight Tracker</a></li>
-          <li><a href="/weather/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106325205753790616/cloudy.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px;">
-            Weather</a></li>
+          <li><a href="/flight/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106327502625964072/direct-flight.png" alt="Track Icon" style="height:25px; width:auto; margin-right:5px; margin-bottom: -2px;">Flight Tracker</a></li>
+          <li><a href="/weather/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106325205753790616/cloudy.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px;">Weather</a></li>
           <li><a href="https://www.booking.com"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106328617329365052/airplane-ticket.png" alt="Book Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -2px;">Book Flight</a></li>
           <li><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106329068175110174/clock.png" alt="Local Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -3px;"><span id="localTime"></span></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -31,10 +30,22 @@
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
-          
+        </ul>
+        <!-- Mobile Navigation -->
+        <ul class="sidenav" id="mobile-demo">
+          {% if user.is_authenticated %}
+          <li><a href="/flight/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106327502625964072/direct-flight.png" alt="Track Icon" style="height:25px; width:auto; margin-right:5px; margin-bottom: -2px;">Flight Tracker</a></li>
+          <li><a href="/weather/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106325205753790616/cloudy.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px;">Weather</a></li>
+          <li><a href="https://www.booking.com"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106328617329365052/airplane-ticket.png" alt="Book Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -2px;">Book Flight</a></li>
+          <li><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106329068175110174/clock.png" alt="Local Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -3px;"><span id="localTime"></span></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
-    </nav>
+    </nav>  
   </header>
   <main class="container">
     <div id="loading" style="display: none;">
@@ -75,6 +86,11 @@ window.onload = function() {
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.dropdown-trigger');
   var instances = M.Dropdown.init(elems);
+});
+// sidenav
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
 });
   </script>
 </body>

@@ -1,41 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Search for a city's weather</h1>
+<div class="container">
+    <h1>Search for a city's weather</h1>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
-</form>
-
-{% if weather %}
-    <h2>{{ weather.city }}</h2>
-    <p>Temperature: {{ weather.temperature }} °C</p>
-    <p>Condition: {{ weather.condition }}</p>
-
-    <form method="POST" action="{% url 'save_weather' %}">
+    <form method="post">
         {% csrf_token %}
-        <input type="hidden" name="city" value="{{ weather.city }}">
-        <input type="hidden" name="temperature" value="{{ weather.temperature }}">
-        <input type="hidden" name="condition" value="{{ weather.condition }}">
-        <input type="submit" value="Save">
+        {{ form.as_p }}
+        <div class="center">
+        <button type="submit" class="btn waves-effect waves-light blue">Search</button>
+        </div>
     </form>
-{% else %}
-    <p>No weather data available</p>
-{% endif %}
-
-{% for weather in all_weather %}
-    <div>
-        <h1>{{ weather.city }}</h1>
-        <p>{{ weather.temperature }} °C</p>
-        <p>{{ weather.condition }}</p>
-        <form method="POST" action="{% url 'delete_weather_data' weather.id %}">
-            {% csrf_token %}
-            <input type="submit" value="Delete">
-        </form>
-        <a href="{% url 'update_weather_data' weather.id %}">Edit</a>
-    </div>
-{% endfor %}
+    {% if weather %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ weather.city }}</span>
+                <p>Temperature: {{ weather.temperature }} °C</p>
+                <p>Condition: {{ weather.condition }}</p>
+            </div>
+            <div class="card-action">
+                <form method="POST" action="{% url 'save_weather' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="city" value="{{ weather.city }}">
+                    <input type="hidden" name="temperature" value="{{ weather.temperature }}">
+                    <input type="hidden" name="condition" value="{{ weather.condition }}">
+                    <button type="submit" class="btn waves-effect waves-light green">Save</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>No weather data available</p>
+    {% endif %}
+    {% for weather in all_weather %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ weather.city }}</span>
+                <p>{{ weather.temperature }} °C</p>
+                <p>{{ weather.condition }}</p>
+            </div>
+            <div class="center">
+            <div class="card-action">
+                <a href="{% url 'update_weather_data' weather.id %}" class="btn waves-effect waves-light blue">Edit</a>
+                <form method="POST" action="{% url 'delete_weather_data' weather.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn waves-effect waves-light yellow darken-3">Delete</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
+

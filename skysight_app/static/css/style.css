@@ -139,3 +139,29 @@ section.again {
   text-align: center;
   color: #fff !important;
 }
+
+@media screen and (max-width: 600px) {
+  
+  .welcome {
+    width: 100%; 
+    height: auto; 
+  }
+
+  .about {
+    font-size: 16px;
+  }
+
+  .welcome-image {
+    width: 100%;
+    height: auto;
+  }
+
+  nav .brand-logo img {
+    height: 30px;
+  }
+
+  nav ul li a img {
+    height: 15px;
+  }
+}
+
