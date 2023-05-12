@@ -1,24 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Flight Data</h1>
+<h1 class="flight-title">Flight Data</h1>
 
 {% if flight %}
-    <h2>Flight number: {{ flight.flight.iata }}</h2>
-    <p>Departure airport: {{ flight.departure.airport }}</p>
-    <p>Departure timezone: {{ flight.departure.timezone }}</p>
-    <p>Departure time: {{ flight.departure.estimated }}</p>
-    <p>Departure terminal: {{ flight.departure.terminal }}</p>
-    <p>Arrival airport: {{ flight.arrival.airport }}</p>
-    <p>Arrival timezone: {{ flight.arrival.timezone }}</p>
-    <p>Arrival time: {{ flight.arrival.estimated }}</p>
-    <p>Arrival terminal: {{ flight.arrival.terminal }}</p>
-    <p>Airline name: {{ flight.airline.name }}</p>
+    <div class="card vertically">
+        <span class="card-title">Flight number: {{ flight.flight.iata }}</span>
+        <div class="card-image">
+            <img src="https://freepngimg.com/thumb/globe/99491-travel-globe-png-free-photo.png">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <p>Departure airport: {{ flight.departure.airport }}</p>
+                <p>Departure timezone: {{ flight.departure.timezone }}</p>
+                <p>Departure time: {{ flight.departure.estimated }}</p>
+                <p>Departure terminal: {{ flight.departure.terminal }}</p>
+                <p>Arrival airport: {{ flight.arrival.airport }}</p>
+                <p>Arrival timezone: {{ flight.arrival.timezone }}</p>
+                <p>Arrival time: {{ flight.arrival.estimated }}</p>
+                <p>Arrival terminal: {{ flight.arrival.terminal }}</p>
+                <p>Airline name: {{ flight.airline.name }}</p>
+            </div>
+        </div>
+    </div>
+    <section class="again">
+        <h2 class="flight-title">Wanna fly again?</h2>
+        <p>Don't worry, Book now!</p>
+        <a class='btn custom-button' href="https://www.booking.com">Book now!</a>
+    </section>
 {% else %}
+<div class="no-data">
+    <p>We are so sorry,</p>
     <p>No flight data available</p>
+    <img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106616538263457912/sad.png">
+</div>
 {% endif %}
 
 {% endblock %}
+
 
 
 

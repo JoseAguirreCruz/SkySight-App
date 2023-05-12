@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Search for a flight</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
-</form>
-
+<div class="container">
+    <h4 class="center-align">Search for a flight</h4>
+    <form method="post" class="col s12">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="center">
+        <button class="btn waves-effect waves-dark blue" type="submit">Search</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

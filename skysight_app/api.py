@@ -4,7 +4,7 @@ import requests
 def get_flight_data(flight_number, ):
     url = "http://api.aviationstack.com/v1/flights"
     params = {
-    "access_key": "47ac311f0e565b5fb2af38c5c85f84ec", 
+    "access_key": "6c92ed3a525fd8fd39e0ccd083799eab", 
     "flight_number": flight_number,
     }   
     response = requests.get(url, params=params)
@@ -16,6 +16,7 @@ def get_weather_data(city):
     params = {
         "key": "8594dc8ba1264ad0964173454230905",
         "q": city,
+        "days": 1,
     }
     response = requests.get(url, params=params)
     data = response.json()

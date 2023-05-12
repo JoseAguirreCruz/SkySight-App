@@ -15,4 +15,9 @@ class WeatherData(models.Model):
     condition = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    maxtemp_c = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    mintemp_c = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    maxwind_kph = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    totalprecip_mm = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    uv = models.DecimalField(max_digits=5, decimal_places=2, null=True)
 

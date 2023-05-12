@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404
-
 from .models import *
 
 def home(request):
@@ -35,19 +34,21 @@ def weather_view(request):
         form = CitySearchForm(request.POST)
         if form.is_valid():
             city = form.cleaned_data['city']
-            weather_data = get_weather_data(city)
+            forecast_data = get_weather_data(city)
             weather = WeatherData(
                 user=request.user,
                 city=city,
-                temperature=weather_data['current']['temp_c'],
-                condition=weather_data['current']['condition']['text'],
+                temperature=forecast_data['current']['temp_c'],
+                condition=forecast_data['current']['condition']['text'],
             )
+            weather.save() 
             all_weather = WeatherData.objects.filter(user=request.user)
             return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
     else:
         form = CitySearchForm()
         all_weather = WeatherData.objects.filter(user=request.user)
     return render(request, 'weather/weather_search.html', {'form': form, 'all_weather': all_weather})
+
 
 @login_required
 def delete_weather_view(request, weather_id):
