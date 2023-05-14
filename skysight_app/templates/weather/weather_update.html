@@ -1,18 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<h1>Update Weather Data</h1>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+<style>
+    .content-container {
+        margin: 2em;
+    }
+    .weather-data {
+        margin-top: 2em;
+    }
+</style>
 
-<h2>Current Weather Data</h2>
-<p>City: {{ weather.city }}</p>
-<p>Temperature: {{ weather.temperature }}</p>
-<p>Condition: {{ weather.condition }}</p>
+<div class="content-container">
+    <h1 class="header">Update Weather Data</h1>
+    <form method="post" class="col s12">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn waves-effect waves-dark blue" type="submit">Update
+        </button>
+    </form>
+    <div class="weather-data">
+        <h2 class="header">Current Weather Data</h2>
+        <ul class="collection">
+            <li class="collection-item">City: {{ weather.city }}</li>
+            <li class="collection-item">Temperature: {{ weather.temperature }}</li>
+            <li class="collection-item">Condition: {{ weather.condition }}</li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 {% endblock %}
+
 

@@ -41,9 +41,9 @@ def weather_view(request):
                 temperature=forecast_data['current']['temp_c'],
                 condition=forecast_data['current']['condition']['text'],
             )
-            weather.save() 
             all_weather = WeatherData.objects.filter(user=request.user)
-            return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather})
+            weather_condition = forecast_data['current']['condition']['text'].lower().replace(" ", "_") 
+            return render(request, 'weather/weather_search.html', {'form': form, 'weather': weather, 'all_weather': all_weather, 'weather_condition': weather_condition}) 
     else:
         form = CitySearchForm()
         all_weather = WeatherData.objects.filter(user=request.user)
@@ -55,7 +55,7 @@ def delete_weather_view(request, weather_id):
     weather = get_object_or_404(WeatherData, id=weather_id)
     if request.method == 'POST':
         weather.delete()
-        return redirect('index')
+        return redirect('weather')
     else:
         return HttpResponseNotAllowed(['POST'])  
 
@@ -88,7 +88,7 @@ def save_weather_view(request):
             temperature=temperature,
             condition=condition,
         )
-        return redirect('index')
+        return redirect('weather')
     else:
         return HttpResponseNotAllowed(['POST'])
 
