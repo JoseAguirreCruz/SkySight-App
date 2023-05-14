@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h4 class="center-align">Search for a flight</h4>
+    <h4 class="flight-title">Search for a flight</h4>
     <form method="post" class="col s12">
         {% csrf_token %}
         {{ form.as_p }}

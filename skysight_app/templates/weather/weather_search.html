@@ -2,8 +2,7 @@
 {% block content %}
 
 <div class="container">
-    <h1>Search for a city's weather</h1>
-
+    <h1 class="flight-title">Search for a city's weather</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

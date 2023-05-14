@@ -37,13 +37,17 @@
         <ul class="sidenav" id="mobile-demo">
           {% if user.is_authenticated %}
           <li><a href="/flight/index">Flight Tracker</a></li>
+          <hr/>
           <li><a href="/weather/index">Weather</a></li>
+          <hr/>
           <li><a href="https://www.booking.com">Book Flight</a></li>
-          <li><span id="localTime"></span></li>
+          <hr/>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
+          <hr/>
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
+          <hr/>
           {% endif %}
         </ul>
       </div>
