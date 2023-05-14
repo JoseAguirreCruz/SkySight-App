@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SkySight</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-
 <body class="{{ weather_condition }}">
   <header class="navbar-fixed">
     <nav>
@@ -19,7 +19,7 @@
           <img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106318787701116989/skysight-high-resolution-logo-white-on-transparent-background.png" alt="SkySight" style="height:40px; width:auto;">
         </a>
         <!-- Hamburger Trigger -->
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
         <!-- Desktop Navigation -->
         <ul class="right hide-on-med-and-down">
           {% if user.is_authenticated %}
@@ -37,9 +37,9 @@
         <ul class="sidenav" id="mobile-demo">
           {% if user.is_authenticated %}
           <li><a href="/flight/index">Flight Tracker</a></li>
-          <li><a href="/weather/index"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106325205753790616/cloudy.png" alt="Weather Icon" style="height:20px; width:auto; margin-right:5px;">Weather</a></li>
-          <li><a href="https://www.booking.com"><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106328617329365052/airplane-ticket.png" alt="Book Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -2px;">Book Flight</a></li>
-          <li><img src="https://cdn.discordapp.com/attachments/1104989771471798334/1106329068175110174/clock.png" alt="Local Icon" style="height:20px; width:auto; margin-right:5px; margin-bottom: -3px;"><span id="localTime"></span></li>
+          <li><a href="/weather/index">Weather</a></li>
+          <li><a href="https://www.booking.com">Book Flight</a></li>
+          <li><span id="localTime"></span></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>

@@ -79,8 +79,7 @@ footer {
   align-items: center;
   text-align: center; 
   padding: 20px;
-  font-size: 24px;
-  color: #fff;
+  font-size: 24px;;
 }
 
 .about > h1 {
@@ -164,17 +163,7 @@ section.again {
   }
 }
 
-/* body.sunny {
-  background: url('https://i.pinimg.com/originals/c8/ba/30/c8ba30ee61944cc26dbde4022a0a4b72.gif') no-repeat center center fixed;
-  background-size: cover;
+.sidenav-overlay {
+  opacity: 0 !important;
+  display: contents !important;
 }
-
-body.cloudy {
-  background: url('https://i.pinimg.com/originals/c8/ba/30/c8ba30ee61944cc26dbde4022a0a4b72.gif') no-repeat center center fixed;
-  background-size: cover;
-}
-
-body.partly_cloudy {
-  background: url('https://media.istockphoto.com/id/825778252/photo/blue-sky-and-white-clouds-background.jpg?b=1&s=170667a&w=0&k=20&c=WdhScne5SJEMEJO1GGjDZeLAkQ7nJ-yoshNvUZPPODs=') no-repeat center center fixed;
-  background-size: cover;
-} */
