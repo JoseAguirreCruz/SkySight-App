@@ -20,7 +20,7 @@
 -	CSS
 ### API used:
 - FlightTrackerAPI
-- PackageAPI
+- WeatherAPI
 ### Planning
 - Trello
 - Draw.io
