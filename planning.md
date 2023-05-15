@@ -12,7 +12,7 @@
 - AAU I would love to check the weather out
 - AAU I would like to see my local time
 ### Images
-![Home Page](https://cdn.discordapp.com/attachments/489903000966529024/1107660034747416617/Screen_Shot_2023-05-15_at_9.25.01_AM.png)
+<!-- ![Home Page](https://cdn.discordapp.com/attachments/489903000966529024/1107660034747416617/Screen_Shot_2023-05-15_at_9.25.01_AM.png) -->
 ### Tools used:
 -	DJango
 -	Express JS
