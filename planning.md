@@ -16,7 +16,8 @@
 ### Tools used:
 -	DJango
 -	Express JS
--	Node JS
+-	Materialize
+-	CSS
 ### API used:
 - FlightTrackerAPI
 - PackageAPI
